@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Coming Soon</title>
+
+<style>
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+
+body, html {
+    margin:0;padding:0;font-family:'Inter', sans-serif;height:100%;overflow-x:hidden;
+    background:#1f2937;color:white;
+}
+
+.container{
+    display:flex;justify-content:center;align-items:center;flex-direction:column;
+    height:100vh;text-align:center;
+    padding:0 2rem;
+}
+
+.hero-image {
+    background: linear-gradient(90deg, #374151, #1f2937);
+    border-radius: 1.5rem;
+    box-shadow: 0px 10px 50px rgba(0,0,0,0.6);
+    padding:8rem 2rem;
+}
+
+.logo{
+    font-size:4rem;margin-bottom:2rem;
+    background-image:linear-gradient(to right,#3b82f6,#ec4899,#eab308);background-clip:text;color:transparent;
+}
+.title{
+    font-size:3.5rem;margin-bottom:1rem;
+}
+
+.subtitle{
+    color:#cbd5e1;max-width:40rem;margin-bottom:2rem;
+}
+.feature-list ul{list-style-type:none;padding-left:0;margin-top:-1.5em;}
+.feature-list li{margin-bottom:.75em;}
+
+.countdown-container {
+    display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:3rem;font-size:1.25rem;
+}
+.countdown-item{
+    min-width:4rem;padding:0.5rem 1rem;background:#f9fafb;color:black;border-radius:.5rem;
+}
+
+.social-links{margin-top:3rem;}
+.social-icon {
+    width:40px;height:40px; border-radius:9999px;
+    background-color:#f9fafb;color:black;display:flex;align-items:center;justify-content:center;
+    transition:background .3s ease;
+}
+.social-icon:hover{background-color:#e2e8f0;}
+
+/* Responsive */
+@media(max-width:640px){
+    .logo {font-size:3rem;}
+    .title {font-size:2.5rem;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero-image p-8 rounded-xl shadow-lg backdrop-blur-md border border-white/10">
+        <!-- Logo -->
+        <h1 class="logo">Cooper Cantrell</h1>
+        <h3 class="subtitle">Robotics Engineer UCSC</h3>
+        <!-- Title -->
+        <p class="title font-bold text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-300 bg-clip-text animate-fade-up duration-700">Under Construction</p>
+        
+        <!-- Description -->
+        <p class="subtitle">Last Update was</p>
+        <!-- Countdown since last update (count up)-->
+        <div class="countdown-container mt-10 animate-fade-up duration-1000 delay-75">
+            <span id="days" class="countdown-item">0</span> Days
+            <span id="hours" class="countdown-item">0</span> Hrs
+            <span id="minutes" class="countdown-item">0</span> Min
+            <span id="seconds" class="countdown-item">0</span> Secs
+        </div>
+
+        <!-- Features -->
+
+        <!-- Social Links -->
+        <div class="social-links mt-12 flex justify-center gap-6 animate-fade-up duration-1000 delay-300">
+            <a href="https://www.linkedin.com/in/cooper-cantrell-05998a242/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Low-budget-man" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href= "mailto:coopercantrellbiz@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+        </div>
+
+    </div> <!-- hero-image -->
+
+</div><!-- container -->
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+// Animate fade-up on load
+document.addEventListener("DOMContentLoaded", function() {
+    const elements = document.querySelectorAll('.animate-fade-up');
+    elements.forEach((el,i)=>{
+        el.style.opacity=0;
+        el.style.transform='translateY(20px)';
+        setTimeout(()=>{
+            el.style.transition='all 1s ease';
+            el.style.opacity=1;
+            el.style.transform='translateY(0)';
+        }, i * 300);
+    });
+});
+
+// Countdown since initial load (count up)
+function updateCountdown() {
+    const now = new Date().getTime();
+    const start = new Date('2025-06-27T00:00:00')// .getTime(); // Change this to your deployment date
+    let diff = now - start;
+
+    if(diff < 0){diff=0;}
+
+    const seconds=Math.floor((diff/1000)%60);
+    const minutes=Math.floor((diff/(1000*60))%60);
+    const hours=Math.floor((diff/(1000*60*60))%24);
+    const days=Math.floor(diff/(1000*60*60*24));
+
+    document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('days').textContent = String(days);
+
+    setTimeout(updateCountdown,1000);
+}
+updateCountdown();
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+</body>
+</html>
