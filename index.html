@@ -9,43 +9,44 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* Dark background */
-            color: #e2e8f0; /* Light text */
+            background-color: #1a202c;
+            color: #e2e8f0;
             line-height: 1.6;
         }
         .container {
             max-width: 960px;
             margin: 0 auto;
             padding: 2rem;
-            margin-left: 240px; /* Shifted right to accommodate sidebar */
+            margin-left: 240px;
+            transition: margin-left 0.3s;
         }
         .section-title {
-            color: #63b3ed; /* A nice blue for titles */
+            color: #63b3ed;
             font-weight: 700;
-            font-size: 1.875rem; /* text-3xl */
+            font-size: 1.875rem;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid #2d3748; /* Darker border */
+            border-bottom: 2px solid #2d3748;
             padding-bottom: 0.5rem;
         }
         .card {
-            background-color: #2d3748; /* Slightly lighter dark for cards */
-            border-radius: 0.75rem; /* rounded-xl */
+            background-color: #2d3748;
+            border-radius: 0.75rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         .link-button {
             display: inline-block;
-            background-color: #4299e1; /* Blue button */
+            background-color: #4299e1;
             color: #ffffff;
             padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem; /* rounded-lg */
+            border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
         .link-button:hover {
-            background-color: #3182ce; /* Darker blue on hover */
+            background-color: #3182ce;
         }
         .sidebar {
             position: fixed;
@@ -60,6 +61,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            transition: transform 0.3s;
         }
         .sidebar h2 {
             color: #63b3ed;
@@ -79,10 +81,50 @@
         .sidebar-link:hover {
             background: rgba(255, 255, 255, 0.1);
         }
-
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1100;
+            background: #232b39;
+            border: none;
+            color: #63b3ed;
+            font-size: 2rem;
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            .container {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 0.5rem;
+            }
+            .section-title {
+                font-size: 1.25rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
+    <button class="sidebar-toggle" aria-label="Open sidebar" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
     <div class="sidebar">
         <h2>Additional information</h2>
         <nav style="width:100%;">
@@ -193,7 +235,7 @@
                 </ul>
             </div>
 
-            <div class="card">
+            <!-- <div class="card">
                 <h3 class="text-xl font-semibold text-gray-200">Front Office Staff</h3>
                 <p class="text-gray-400">Sierra Eye Medical Group, Visalia, CA | June 2018 – June 2023</p>
                 <ul class="list-disc list-inside text-gray-300 mt-2">
@@ -202,7 +244,7 @@
                     <li>Organized physical file systems, reducing lookup times and space needed to store files.</li>
                     <li>Assembled equipment and furniture throughout the office.</li>
                 </ul>
-            </div>
+            </div> -->
         </section>
 
         <!-- Projects Section -->
