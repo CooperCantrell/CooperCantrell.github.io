@@ -17,6 +17,7 @@
             max-width: 960px;
             margin: 0 auto;
             padding: 2rem;
+            margin-left: 240px; /* Shifted right to accommodate sidebar */
         }
         .section-title {
             color: #63b3ed; /* A nice blue for titles */
@@ -46,9 +47,51 @@
         .link-button:hover {
             background-color: #3182ce; /* Darker blue on hover */
         }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background: #232b39;
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .sidebar h2 {
+            color: #63b3ed;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-link {
+            display: block;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-radius: 0.375rem;
+            transition: background 0.2s;
+            font-weight: 500;
+        }
+        .sidebar-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
     </style>
 </head>
 <body class="antialiased">
+    <div class="sidebar">
+        <h2>Additional information</h2>
+        <nav style="width:100%;">
+            <a href="https://sites.google.com/ucsc.edu/flare-poster-qr-site?usp=sharing" class="sidebar-link">FLARE by Silvaye</a>
+            <a href="https://github.com/CooperCantrell/SLUG-O-LYMPICS" class="sidebar-link">Ball Collecting Robot</a>
+            <a href="https://github.com/CooperCantrell/simplysecureproject" class="sidebar-link">Simple Security System</a>
+            <!-- Add more links as needed -->
+        </nav>
+    </div>
     <div class="container">
         <!-- Header Section -->
         <header class="text-center py-8">
